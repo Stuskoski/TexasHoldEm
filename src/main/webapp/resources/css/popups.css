@@ -1,0 +1,26 @@
+#infoPopupWindowBorder{
+    background:rgba(0,0,0,0.4);
+    width: 20em;
+    height: 15em;
+    margin: auto;
+    display: block;
+    position: fixed;
+    left: 40%;
+    top: 30%;
+    text-align: center;
+    border-radius: 20px;
+    z-index: 9;
+}
+
+#infoPopupMsg{
+    color: red;
+    font-size: 25px;
+    font-weight: bolder;
+    height: 100px;
+    margin: auto;
+    top: 20%;
+    position: relative;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

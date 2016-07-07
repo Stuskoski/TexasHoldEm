@@ -1,0 +1,41 @@
+.game-config-container{
+    background:rgba(0,0,0,0.5);
+    border-radius: 15px;
+    width: 25em;
+    height: auto;
+    margin: 10% auto;
+    padding: 10px;
+    position: relative;
+}
+
+.welcome-msg{
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.game-config-display{
+    background:rgba(255,255,255,0.7);
+    border-radius: 15px;
+    color: black;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.game-config-display-title{
+    font-size: 15px;
+}
+
+.custom-form {
+    border: 0;
+    outline: none !important;
+    background: transparent;
+    border-bottom: 2px solid white;
+    color: white;
+    text-align: center;
+}
+
+.custom-form:focus{
+    outline: none!important;
+    color: yellow!important;
+}

@@ -1,0 +1,63 @@
+.hide-me{
+    display: none !important;
+}
+
+.center-div{
+    text-align: center !important;
+}
+
+.custom-btn{
+    font-size: 15px;
+    border-radius: 10px;
+    width: 125px;
+    background: white;
+    color: green;
+    transition: all 0.3s ease 0s;
+    border-color: green;
+}
+
+.custom-btn:hover{
+    border-width: 1px;
+    background: green;
+    color: white;
+}
+
+.pad-bottom-2em{
+    padding-bottom: 2em;
+}
+.pad-bottom-1em{
+    padding-bottom: 1em;
+}
+
+.pad-left-1em{
+    padding-left: 1em;
+}
+
+.pad-right-1em{
+    padding-right: 1em;
+}
+
+.text-white{
+    color: white;
+}
+.text-black{
+    color: black;
+}
+
+.empty-field-highlight{
+    color: red;
+}
+
+.overlay {
+    position:fixed;
+    display:none;
+
+    /* color with alpha channel */
+    background-color: rgba(0, 0, 0, 0.8); /* 0.7 = 70% opacity */
+
+    /* stretch to screen edges */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
