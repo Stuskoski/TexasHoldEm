@@ -11,11 +11,10 @@
         Welcome to Texas Hold'em
     </div>
 
-
-    <jsp:include page="game-config-form.jsp"/>
-
-
-    <div class="center-div">
-        <button onclick="startGame()" class="custom-btn btn">Start Game</button>
-    </div>
+    <form onsubmit="event.preventDefault(); startGame();">
+        <jsp:include page="game-config-form.jsp"/>
+        <div class="center-div">
+            <button type="submit" class="custom-btn btn">Start Game</button>
+        </div>
+    </form>
 </div>

@@ -3,6 +3,7 @@
  */
 
 var DeckReference;
+var DeckAction = 0;
 
 function DeckObject(){
     this.deck = [];
@@ -12,6 +13,30 @@ function DeckObject(){
 
 function deckReferenceListDeck(){
     DeckReference.giveDeckOrder();
+}
+
+function nextDeckAction(){
+    console.log("Next Deck Action: " + DeckAction);
+    if(DeckAction == 0){
+        showAndThenHideInfoWindow("Dealing Cards");
+        DeckAction++;
+    }
+    else if(DeckAction == 1){
+        showAndThenHideInfoWindow("Here comes the flop");
+        DeckAction++;
+    }
+    else if(DeckAction == 2){
+        showAndThenHideInfoWindow("The river flows");
+        DeckAction++;
+    }
+    else if(DeckAction == 3){
+        showAndThenHideInfoWindow("Fifth Street coming up");
+        DeckAction++;
+    }
+    else if(DeckAction == 4){
+        showAndThenHideInfoWindow("Dealing Cards");
+        DeckAction=0;
+    }
 }
 
 DeckObject.prototype.addCardToDeck = function(card){

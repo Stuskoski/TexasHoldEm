@@ -5,3 +5,35 @@
     left: 30%;
     top: 35%;
 }
+
+.table-btn-container{
+    left: 30%;
+    top: 60%;
+    position: absolute;
+    width: 11em;
+    height: 5em;
+}
+/*//check call raise fold*/
+.table-btn-check{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.table-btn-call{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.table-btn-raise{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.table-btn-fold{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.player-turn{
+    background-color: rgba(0 0 0 0.5);
+}

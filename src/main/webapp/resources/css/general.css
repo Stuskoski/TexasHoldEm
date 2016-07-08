@@ -22,6 +22,22 @@
     color: white;
 }
 
+.custom-btn-xs{
+    font-size: 15px;
+    border-radius: 10px;
+    width: 75px;
+    background: white;
+    color: green;
+    transition: all 0.3s ease 0s;
+    border-color: green;
+}
+
+.custom-btn-xs:hover{
+    border-width: 1px;
+    background: green;
+    color: white;
+}
+
 .pad-bottom-2em{
     padding-bottom: 2em;
 }
@@ -35,6 +51,10 @@
 
 .pad-right-1em{
     padding-right: 1em;
+}
+
+.margin-bot-1em{
+    margin-bottom: 1em;
 }
 
 .text-white{
