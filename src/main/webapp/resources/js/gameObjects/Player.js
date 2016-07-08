@@ -10,6 +10,8 @@ function PlayerObject(name, playerNumber){
     this.hand = [];
     this.score = 0;
     this.money = 1000;
+    this.hasFolded = false;
+    this.isItMyTurn = false;
 }
 
 // receives name and player number, creates player object and sends to the static list for keeping

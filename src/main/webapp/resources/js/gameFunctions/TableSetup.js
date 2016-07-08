@@ -19,7 +19,7 @@ function setUpTable(){
     '<div class="table-btn-check custom-btn-xs center-div margin-bot-1em" onclick="playerCheck()">Check</div>' +
     '<div class="table-btn-call custom-btn-xs center-div margin-bot-1em" onclick="playerCall()">Call</div>' +
     '<div class="table-btn-raise custom-btn-xs center-div margin-bot-1em" onclick="playerRaise()">Raise</div>' +
-    '<div class="table-btn-fold custom-btn-xs center-div" onclick="playerFold()">Fold</div>' +
+    '<div class="table-btn-fold custom-btn-xs center-div" onclick="foldPlayer()">Fold</div>' +
     '</div>');
 
 

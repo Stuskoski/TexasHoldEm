@@ -8,18 +8,20 @@ function whoWins(){
     var tableCards = TableCardsStaticObject.list;
 
     for(i=0; i<list.length; i++){
-        var hand = list[i].hand;
+        if(!list[i].hasFolded){
+            var hand = list[i].hand;
 
-        //check straight flush
-        //check four of a kind
-        //check full house
-        //check flush
-        //check straight
-        //check 3 of a kind
-        //check 2 pair
-        //check 1 pair
-        //check high card
-        console.log(TableCardsStaticObject);
+            //check straight flush
+            //check four of a kind
+            //check full house
+            //check flush
+            //check straight
+            //check 3 of a kind
+            //check 2 pair
+            //check 1 pair
+            //check high card
+            console.log(TableCardsStaticObject);
+        }
     }
 }
 
