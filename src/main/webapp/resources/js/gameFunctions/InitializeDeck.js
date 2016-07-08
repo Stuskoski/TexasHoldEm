@@ -59,18 +59,20 @@ function generateDiamonds() {
 function randomizeDeck(){
     var deck = new DeckObject();
     var limit = tempArrayOfCards.length;
+    var tempLocalArray;
     var i;
 
     console.log("limit: " + limit);
     console.log("total: " + totalCardsAdded);
 
-    tempArrayOfCards = shuffle(tempArrayOfCards);
-    console.log("Cards shuffled");
+    //console.log("Cards array: " + tempArrayOfCards.toString());
+    tempLocalArray = shuffleArray(tempArrayOfCards);
 
     for(i=0; i < limit; i++) {
-        deck.addCardToDeck(tempArrayOfCards[i]);
+        deck.addCardToDeck(tempLocalArray[i]);
     }
 
     //Set static reference in Deck.js
     DeckReference = deck;
+    console.log("Deck reference set")
 }

@@ -11,7 +11,8 @@ function startGame(){
     var numOfDecks= $('#num-of-decks').val();
 
     if(checkAllFields(numOfPlayers)) {
-        var settingsObject = new SettingsObject($('#user-name-input').val(), numOfPlayers);
+        var settingsObject = new SettingsObject($('#user-name-input').val(), numOfPlayers, numOfDecks);
+        var i;
 
         setSettingsObject(settingsObject);
 
@@ -20,9 +21,39 @@ function startGame(){
         InitDeck(numOfDecks);
 
         setUpTable();
+
+        //init a new table cards object
+        TableCardsStaticObject = new TableCardsObject();
+
+        //instantiates a new list
+        createPlayerList();
+        var staticSettingsObject = getSettingsObject();
+
+        //Create players and add them to static list
+        for(i=0; i<staticSettingsObject.playerNames.length; i++){
+            createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
+        }
     }
+}
 
+//Create object, set reference to it, hide menu
+function restartGame(){
+    var i;
+    var staticSettingsObject = getSettingsObject();
 
+    //clear the array
+    TableCardsStaticObject = new TableCardsObject();
+
+    InitDeck(staticSettingsObject.numOfDecks);
+
+    setUpTable();
+
+    PlayerListObject.length = 0;
+    //Create players and add them to static list
+    for(i=0; i<staticSettingsObject.playerNames.length; i++){
+
+        createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
+    }
 }
 
 /**

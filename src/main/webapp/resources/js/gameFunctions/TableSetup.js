@@ -11,6 +11,7 @@ function setUpTable(){
     homeDiv.append('<div class="player-turn">Current Turn:<span>Player 1</span></div>');
 
     homeDiv.append('<div class="">' +
+        '<div class="next-step">Deal</div>' +
         '<img onClick = "nextDeckAction();" class="table-deck" src="'+DeckReference.deckImg.src+'">' +
         '</div>');
     //check call raise fold

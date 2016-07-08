@@ -7,12 +7,13 @@
 
 var settingsObjectStatic;
 
-function SettingsObject(userName, numOfPlayers){
+function SettingsObject(userName, numOfPlayers, numOfDecks){
     var i;
 
     this.playerNames = [];
     this.userName = userName;
     this.numOfPlayers = numOfPlayers;
+    this.numOfDecks = numOfDecks;
 
     this.playerNames[0] = $('#user-name-input').val();
     for(i=1; i <= numOfPlayers; i++){

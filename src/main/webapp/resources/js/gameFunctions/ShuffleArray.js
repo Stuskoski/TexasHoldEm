@@ -2,9 +2,8 @@
  * Created by r730819 on 7/7/2016.
  */
 
-function shuffle(array) {
+function shuffleArray(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
 

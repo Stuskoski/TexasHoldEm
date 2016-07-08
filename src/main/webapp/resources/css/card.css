@@ -1,5 +1,17 @@
-.card-body{
+.card-body1{
+    width: 55%;
+    height: 75%;
+    z-index: 2;
+    position: absolute;
+    left: 0;
 
+}
+.card-body2{
+    width: 55%;
+    height: 75%;
+    z-index: 3;
+    position: absolute;
+    left: 20%;
 }
 
 .card-number-top-left{

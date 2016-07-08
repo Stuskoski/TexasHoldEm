@@ -1,13 +1,64 @@
 .table-deck{
     width: 7%;
-    height: 20%;
+    height: 18%;
     position: absolute;
-    left: 30%;
-    top: 35%;
+    left: 35%;
+    top: 38%;
+}
+.next-step{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 75px;
+    position: absolute;
+    left: 35%;
+    top: 34%;
+    text-align: center;
+}
+.flop-card1{
+    width: 7%;
+    height: 18%;
+    position: absolute;
+    left: 43%;
+    top: 38%;
+}
+.flop-card2{
+    width: 7%;
+    height: 18%;
+    position: absolute;
+    left: 51%;
+    top: 38%;
+}
+.flop-card3{
+    width: 7%;
+    height: 18%;
+    position: absolute;
+    left: 59%;
+    top: 38%;
+}
+.turn-card{
+    width: 7%;
+    height: 18%;
+    position: absolute;
+    left: 67%;
+    top: 38%;
+}
+.river-card{
+    width: 7%;
+    height: 18%;
+    position: absolute;
+    left: 75%;
+    top: 38%;
+}
+.show-deck{
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .table-btn-container{
-    left: 30%;
+    left: 35%;
     top: 60%;
     position: absolute;
     width: 11em;
@@ -35,5 +86,158 @@
     right: 0;
 }
 .player-turn{
-    background-color: rgba(0 0 0 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 145px;
+}
+
+/*bot mid*/
+.player1-hand{
+   position: absolute;
+    bottom: 0;
+    left: 45%;
+    right: 45%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+}
+/*top mid*/
+.player2-hand{
+    position: absolute;
+    left: 45%;
+    right: 45%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+/*mid left*/
+.player3-hand{
+    position: absolute;
+    bottom: 40%;
+    left: 5%;
+    right: 80%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
+/*mid right*/
+.player4-hand{
+    position: absolute;
+    bottom: 45%;
+    left: 85%;
+    right: 12%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    -ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg);
+}
+/*top left corner*/
+.player5-hand{
+    position: absolute;
+    bottom: 5%;
+    left: 15%;
+    right: 75%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+/*bot right corner*/
+.player6-hand{
+    position: absolute;
+    top: 5%;
+    left: 75%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    -ms-transform: rotate(225deg); /* IE 9 */
+    -webkit-transform: rotate(225deg); /* Chrome, Safari, Opera */
+    transform: rotate(225deg);
+}
+/*bot left corner*/
+.player7-hand{
+    position: absolute;
+    bottom: 5%;
+    left: 75%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    -ms-transform: rotate(315deg); /* IE 9 */
+    -webkit-transform: rotate(315deg); /* Chrome, Safari, Opera */
+    transform: rotate(315deg);
+}
+/*top right corner*/
+.player8-hand{
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    right: 75%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    -ms-transform: rotate(135deg); /* IE 9 */
+    -webkit-transform: rotate(135deg); /* Chrome, Safari, Opera */
+    transform: rotate(135deg);
+}
+
+.player1-title{
+    color: white;
+    font-weight: bold;
+}
+.player2-title{
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    bottom: 18px;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+.player3-title{
+    color: white;
+    font-weight: bold;
+}
+.player4-title{
+    color: white;
+    font-weight: bold;
+}
+.player5-title{
+    color: white;
+    font-weight: bold;
+}
+.player6-title{
+    color: white;
+    font-weight: bold;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: 18px;
+}
+.player7-title{
+    color: white;
+    font-weight: bold;
+}
+.player8-title{
+    color: white;
+    font-weight: bold;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: 18px;
 }
