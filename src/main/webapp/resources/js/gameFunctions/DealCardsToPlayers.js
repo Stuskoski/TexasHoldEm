@@ -9,6 +9,12 @@ function dealCards(){
 
     console.log("Dealing cards to "+numOfPlayers+" players");
 
+    console.log("Current PlayerList: ");
+    for(i=0; i<PlayerListObject.length; i++){
+        console.log(PlayerListObject[i].name);
+    }
+
+
     for(i=0; i<numOfPlayers; i++){
         for(j=0; j<2; j++){
             getPlayerList()[i].hand.push(DeckReference.getCardFromDeckAndRemove());
@@ -20,16 +26,16 @@ function dealCards(){
         var homeDiv = $('#home-div');
 
         if(i==0){
-            homeDiv.append('<div class="player'+(i+1)+'-hand">' +
+            homeDiv.append('<div id="'+PlayerListObject[i].name+'-hand" class="player'+(i+1)+'-hand">' +
                 '<div class="player'+(i+1)+'-title">'+getPlayerList()[i].name+'</div>' +
-                '<img onClick = "" class="card-body1 player'+(i+1)+'-card1" src="'+getPlayerList()[i].hand[0].cardImg.src+'">' +
-                '<img onClick = "" class="card-body2 player'+(i+1)+'-card2" src="'+getPlayerList()[i].hand[1].cardImg.src+'">' +
+                '<img id="'+PlayerListObject[i].name+'c1" class="card-body1 player'+(i+1)+'-card1" src="'+getPlayerList()[i].hand[0].cardImg.src+'">' +
+                '<img id="'+PlayerListObject[i].name+'c2" class="card-body2 player'+(i+1)+'-card2" src="'+getPlayerList()[i].hand[1].cardImg.src+'">' +
                 '</div>');
         }else{
-            homeDiv.append('<div class="player'+(i+1)+'-hand">' +
+            homeDiv.append('<div id="'+PlayerListObject[i].name+'-hand" class="player'+(i+1)+'-hand">' +
                 '<div class="player'+(i+1)+'-title">'+getPlayerList()[i].name+'</div>' +
-                '<img onClick = "" class="card-body1 player'+(i+1)+'-card1" src="resources/images/deck-of-card.png">' +
-                '<img onClick = "" class="card-body2 player'+(i+1)+'-card2" src="resources/images/deck-of-card.png">' +
+                '<img id="'+PlayerListObject[i].name+'c1" class="card-body1 player'+(i+1)+'-card1" src="resources/images/deck-of-card.png">' +
+                '<img id="'+PlayerListObject[i].name+'c2" class="card-body2 player'+(i+1)+'-card2" src="resources/images/deck-of-card.png">' +
                 '</div>');
         }
 

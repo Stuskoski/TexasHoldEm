@@ -79,6 +79,21 @@ function nextTurn(){
 
         playerTurnMsg.append('Current Turn:<span>' + PlayerListObject[currentPlayerTurn].name + '</span>');
 
+        if(currentPlayerTurn == 0){
+            document.getElementById('check-btn').style.pointerEvents = 'auto';
+            document.getElementById('fold-btn').style.pointerEvents = 'auto';
+            document.getElementById('raise-btn').style.pointerEvents = 'auto';
+            document.getElementById('call-btn').style.pointerEvents = 'auto';
+        }else{
+            document.getElementById('check-btn').style.pointerEvents = 'none';
+            document.getElementById('fold-btn').style.pointerEvents = 'none';
+            document.getElementById('raise-btn').style.pointerEvents = 'none';
+            document.getElementById('call-btn').style.pointerEvents = 'none';
+
+            doComputerTurn();
+        }
+
+
     }
 
 }

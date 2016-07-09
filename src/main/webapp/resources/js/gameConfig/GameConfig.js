@@ -30,6 +30,7 @@ function startGame(){
         var staticSettingsObject = getSettingsObject();
 
         //Create players and add them to static list
+        console.log("Player Names: " + staticSettingsObject.playerNames);
         for(i=0; i<staticSettingsObject.numOfPlayers; i++){
             createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
         }
@@ -63,8 +64,9 @@ function restartGame(){
 
     PlayerListObject.length = 0;
     //Create players and add them to static list
-    for(i=0; i<staticSettingsObject.numOfPlayers; i++){
 
+    console.log("Player Names: " + staticSettingsObject.playerNames);
+    for(i=0; i<staticSettingsObject.numOfPlayers; i++){
         createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
     }
 

@@ -17,7 +17,7 @@ function SettingsObject(userName, numOfPlayers, numOfDecks){
 
     this.playerNames[0] = $('#user-name-input').val();
     for(i=1; i <= numOfPlayers; i++){
-        this.playerNames[i] = $('#computer'+i+'-input').val();
+        this.playerNames.push($('#computer'+i+'-input').val());
     }
 }
 
