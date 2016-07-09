@@ -26,3 +26,16 @@ function hideInfoWindow(){
     $(".overlay").fadeOut("slow");
     $('#home-div').toggle();
 }
+
+function showEndGameMsg(msg){
+    var popupWindow = $("#infoPopupWindowBorder");
+
+    $(".overlay").fadeIn("fast");
+
+    $('#home-div').toggle();
+
+    document.getElementById("infoPopupMsg").innerHTML = msg;
+
+    popupWindow.removeClass("hide-me");
+    popupWindow.fadeIn("slow");
+}

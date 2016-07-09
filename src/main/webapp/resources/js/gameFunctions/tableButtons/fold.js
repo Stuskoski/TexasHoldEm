@@ -7,6 +7,10 @@ function foldPlayer(){
     $('#'+PlayerListObject[currentPlayerTurn].name+'-hand').empty();
     console.log('#'+PlayerListObject[currentPlayerTurn].name+'-hand' + ' was emptied');
 
+    //Save the user money on fold
+    saveUserMoney();
+    //PlayerMoney[currentPlayerTurn][0] = PlayerListObject[currentPlayerTurn].money;
+
     PlayerListObject.splice(currentPlayerTurn, 1);
     //PlayerListObject[currentPlayerTurn].hasFolded = true;
 

@@ -23,7 +23,10 @@ function whoWins(){
     }
 
     if(nonFoldedPlayers <= 1){
-        showAndThenHideInfoWindow(PlayerListObject[winner].name + " WINS!")
+        showAndThenHideInfoWindow(PlayerListObject[winner].name + " wins the round!");
+        PlayerListObject[winner].money += ThePot;
+        ThePot = 0;
+        saveUserMoney();
     }
 
     for(i=0; i<list.length; i++){

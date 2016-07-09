@@ -9,7 +9,7 @@ function PlayerObject(name, playerNumber){
     this.playerNumber = playerNumber;
     this.hand = [];
     this.score = 0;
-    this.money = 0;
+    this.money = 1000;
     this.hasFolded = false;
     this.isItMyTurn = false;
 }

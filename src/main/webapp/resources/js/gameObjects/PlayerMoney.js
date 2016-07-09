@@ -3,17 +3,47 @@
  */
 
 
-var PlayerScores = [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000];
+var PlayerMoney = [[1000,"null"], [1000,"null"], [1000,"null"],
+    [1000,"null"], [1000,"null"], [1000,"null"], [1000,"null"], [1000,"null"]];
+
+function saveUserNamesInPlayerMoneyArray(){
+    var i;
+
+    for(i=0; i<PlayerListObject.length; i++){
+        PlayerMoney[i][1] = PlayerListObject[i].name;
+    }
+}
+
+/**
+ * Save all players money
+ */
+function saveUserMoney(){
+    var i, j;
+
+    for(i=0; i<PlayerListObject.length; i++){
+        for(j=0; j<PlayerMoney.length; j++){
+            if(PlayerMoney[j][1] == PlayerListObject[i].name){
+                PlayerMoney[j][0] = PlayerListObject[i].money;
+            }
+        }
+    }
+}
 
 /**
  * Give all the players their money again after creating their object again
  */
 function reinstantiateUserMoney(){
-    var i;
+    var i, j;
 
     for(i=0; i<PlayerListObject.length; i++){
-        PlayerListObject[i].money = PlayerScores[i];
+        for(j=0; j<PlayerMoney.length; j++){
+            if(PlayerMoney[j][1] == PlayerListObject[i].name){
+                PlayerListObject[i].money = PlayerMoney[j][0];
+            }
+        }
     }
+
+    updateAllMoneysOnTable();
 }
 
 /**
@@ -22,11 +52,24 @@ function reinstantiateUserMoney(){
 function checkUserForNoMoney(){
     var i;
 
+    console.log("CHECKING FOR MONEY");
+    console.log(PlayerListObject);
     for(i=0; i<PlayerListObject.length; i++){
         if(PlayerListObject[i].money <= 0){
+            console.log(PlayerListObject[i].name + " HAS NO MONEY");
             PlayerListObject.splice(i, "1");
+            $('#'+PlayerListObject[i].name+'-hand').empty();
         }
     }
+
+    if(PlayerListObject.length == 1){
+        showEndGameMsg("Game Over\n" +
+            PlayerListObject[0].name + " Wins\n" +
+            "To play again, refresh the page.");
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -37,9 +80,9 @@ function takeTheBlindFromPlayersAndAddToPot(){
     var i;
 
     for(i=0; i<PlayerListObject.length; i++){
-        if(PlayerListObject[i].money >= 25){
-            PlayerListObject[i].money -= 25;
-            ThePot += 25;
+        if(PlayerListObject[i].money >= 250){
+            PlayerListObject[i].money -= 250;
+            ThePot += 250;
         }else{
             ThePot += PlayerListObject[i].money;
             PlayerListObject[i].money = 0;

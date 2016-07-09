@@ -20,6 +20,8 @@ function startGame(){
 
         $('#game-config-id').addClass("hide-me");
 
+        DeckReference = null;
+
         InitDeck(numOfDecks);
 
         //init a new table cards object
@@ -35,6 +37,8 @@ function startGame(){
             createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
         }
 
+        saveUserNamesInPlayerMoneyArray();
+
         reinstantiateUserMoney();
 
         setUpTable();
@@ -49,6 +53,9 @@ function startGame(){
 function restartGame(){
     var i;
     var staticSettingsObject = getSettingsObject();
+
+    //save money
+    saveUserMoney();
 
     NewGame = true;
 
@@ -79,9 +86,15 @@ function restartGame(){
 
     setUpTable();
 
-    nextDeckAction();
+    //Check for end of game
+    if(checkUserForNoMoney()){
 
-    $('.player'+(currentPlayerTurn+1)+'-title').addClass("highlight-words");
+    }else{
+        nextDeckAction();
+
+        $('.player'+(currentPlayerTurn+1)+'-title').addClass("highlight-words");
+    }
+
 }
 
 /**
