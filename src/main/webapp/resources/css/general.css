@@ -81,3 +81,7 @@
     bottom: 0;
     right: 0;
 }
+
+.highlight-words{
+    color: yellow !important;
+}

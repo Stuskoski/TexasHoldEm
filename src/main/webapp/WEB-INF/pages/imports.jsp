@@ -4,6 +4,10 @@
 <script src="<c:url value="/resources/js/gameConfig/GameConfig.js"/>"></script>
 <script src="<c:url value="/resources/js/gameConfig/SettingsObject.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/InitializeDeck.js"/>"></script>
+<script src="<c:url value="/resources/js/gameFunctions/tableButtons/Call.js"/>"></script>
+<script src="<c:url value="/resources/js/gameFunctions/tableButtons/Check.js"/>"></script>
+<script src="<c:url value="/resources/js/gameFunctions/tableButtons/Fold.js"/>"></script>
+<script src="<c:url value="/resources/js/gameFunctions/tableButtons/Raise.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/ShuffleArray.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/TableSetup.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/DealCardsToPlayers.js"/>"></script>
@@ -11,6 +15,7 @@
 <script src="<c:url value="/resources/js/gameFunctions/Turn.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/River.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/DetermineWhoWins.js"/>"></script>
+<script src="<c:url value="/resources/js/gameFunctions/PlayerTurn.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/Table.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/Card.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/Deck.js"/>"></script>

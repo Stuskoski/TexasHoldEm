@@ -55,15 +55,7 @@ function nextDeckAction(){
         whoWins();
         deckMsg.empty();
         deckMsg.append("Restart");
-        DeckAction++;
-    }
-    else if(DeckAction == 5){
-        showAndThenHideInfoWindow("Clearing Cards");
-        DeckReference.removeCardFromDeck();
         DeckAction=0;
-        deckMsg.empty();
-        deckMsg.append("Deal");
-        restartGame();
     }
 }
 

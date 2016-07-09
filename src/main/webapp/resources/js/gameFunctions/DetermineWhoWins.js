@@ -6,6 +6,25 @@ function whoWins(){
     var list = PlayerListObject;
     var i;
     var tableCards = TableCardsStaticObject.list;
+    var nonFoldedPlayers = 0;
+    var winner;
+
+    DeckAction = 0;
+    currentPlayerTurn = 0;
+
+
+    //check for only one player left first
+    for(i=0; i<PlayerListObject.length; i++){
+        PlayerListObject[i].isItMyTurn = false;//set everyone to not having a turn
+        if(!PlayerListObject[i].hasFolded){
+            nonFoldedPlayers++;
+            winner = i;
+        }
+    }
+
+    if(nonFoldedPlayers <= 1){
+        showAndThenHideInfoWindow(PlayerListObject[winner].name + " WINS!")
+    }
 
     for(i=0; i<list.length; i++){
         if(!list[i].hasFolded){
@@ -23,6 +42,8 @@ function whoWins(){
             console.log(TableCardsStaticObject);
         }
     }
+
+    restartGame();
 }
 
 function checkStraightFlush(hand){

@@ -5,6 +5,8 @@
  * asking the user for them.
  */
 
+var NewGame = true;
+
 //Create object, set reference to it, hide menu
 function startGame(){
     var numOfPlayers= $('#num-of-players').val();
@@ -20,8 +22,6 @@ function startGame(){
 
         InitDeck(numOfDecks);
 
-        setUpTable();
-
         //init a new table cards object
         TableCardsStaticObject = new TableCardsObject();
 
@@ -30,9 +30,15 @@ function startGame(){
         var staticSettingsObject = getSettingsObject();
 
         //Create players and add them to static list
-        for(i=0; i<staticSettingsObject.playerNames.length; i++){
+        for(i=0; i<staticSettingsObject.numOfPlayers; i++){
             createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
         }
+
+        setUpTable();
+
+        nextDeckAction();
+
+        $('.player'+(currentPlayerTurn+1)+'-title').addClass("highlight-words");
     }
 }
 
@@ -41,19 +47,32 @@ function restartGame(){
     var i;
     var staticSettingsObject = getSettingsObject();
 
+    NewGame = true;
+
     //clear the array
     TableCardsStaticObject = new TableCardsObject();
 
-    InitDeck(staticSettingsObject.numOfDecks);
+    //Set the deck action to 0 for new game
+    DeckAction = 0;
 
-    setUpTable();
+    //Restart the turns
+    currentPlayerTurn = 0;
+    console.log("Game restarted: " + currentPlayerTurn);
+
+    InitDeck(staticSettingsObject.numOfDecks);
 
     PlayerListObject.length = 0;
     //Create players and add them to static list
-    for(i=0; i<staticSettingsObject.playerNames.length; i++){
+    for(i=0; i<staticSettingsObject.numOfPlayers; i++){
 
         createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
     }
+
+    setUpTable();
+
+    nextDeckAction();
+
+    $('.player'+(currentPlayerTurn+1)+'-title').addClass("highlight-words");
 }
 
 /**
