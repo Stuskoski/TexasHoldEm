@@ -53,6 +53,9 @@ function restartGame(){
     //clear the array
     TableCardsStaticObject = new TableCardsObject();
 
+    //Reset the player
+    theHumanHasFolded = false;
+
     //Set the deck action to 0 for new game
     DeckAction = 0;
 

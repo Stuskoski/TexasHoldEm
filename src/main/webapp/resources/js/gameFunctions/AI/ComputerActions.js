@@ -4,12 +4,10 @@
 
 function doComputerTurn(){
     //simulate thinking
-    setTimeout(getCompChoice, Math.round(Math.random()*2000) + 500);
+    setTimeout(getCompChoice, Math.round(Math.random()*2500) + 500);
 }
 
 function getCompChoice(){
-    var choice = Math.round(Math.random()*4) + 1;
-
     switch(Math.round(Math.random()*4) + 1){
         case 1:
             raisePlayer();

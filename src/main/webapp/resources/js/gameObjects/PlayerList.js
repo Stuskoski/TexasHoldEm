@@ -3,6 +3,7 @@
  */
 
 var PlayerListObject;
+var theHumanHasFolded = false;
 
 function createPlayerList(){
     PlayerListObject = [];

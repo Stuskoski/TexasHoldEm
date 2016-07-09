@@ -79,7 +79,8 @@ function nextTurn(){
 
         playerTurnMsg.append('Current Turn:<span>' + PlayerListObject[currentPlayerTurn].name + '</span>');
 
-        if(currentPlayerTurn == 0){
+        console.log("The real turn: " + currentPlayerTurn);
+        if(currentPlayerTurn == 0 && !theHumanHasFolded){ // todo add a check for the human
             document.getElementById('check-btn').style.pointerEvents = 'auto';
             document.getElementById('fold-btn').style.pointerEvents = 'auto';
             document.getElementById('raise-btn').style.pointerEvents = 'auto';

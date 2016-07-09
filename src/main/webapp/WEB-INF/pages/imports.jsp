@@ -22,6 +22,8 @@
 <script src="<c:url value="/resources/js/gameObjects/Deck.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/Player.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/PlayerList.js"/>"></script>
+<script src="<c:url value="/resources/js/gameObjects/PlayerScores.js"/>"></script>
+<script src="<c:url value="/resources/js/gameObjects/ThePot.js"/>"></script>
 <script src="<c:url value="/resources/js/popups/ShowAndHideInfoWindow.js"/>"></script>
 
 
