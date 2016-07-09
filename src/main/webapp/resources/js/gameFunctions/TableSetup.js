@@ -10,7 +10,8 @@ function setUpTable(){
     //Current Turn:<span>'+ PlayerListObject[currentPlayerTurn].name +'</span>
 
     homeDiv.append(
-        '<div class="player-turn">Current Turn:<span>'+ PlayerListObject[currentPlayerTurn].name +'</span></div>');
+        '<div class="player-turn">Current Turn:<span>'+ PlayerListObject[currentPlayerTurn].name +'</span></div>' +
+        '<div class="current-pot">Current Pot:$<span>'+ ThePot +'</span></div>');
 
     homeDiv.append('<div class="">' +
         '<div class="next-step">Deal</div>' +

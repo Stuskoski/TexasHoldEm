@@ -93,6 +93,14 @@
     width: 145px;
 }
 
+.current-pot{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 145px;
+}
+
 /*bot mid*/
 .player1-hand{
    position: absolute;
@@ -194,7 +202,7 @@
     transform: rotate(135deg);
 }
 
-.player1-title{
+.player-title{
     color: white;
     font-weight: bold;
 }

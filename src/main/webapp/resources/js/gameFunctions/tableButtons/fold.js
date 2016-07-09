@@ -18,6 +18,9 @@ function foldPlayer(){
 
     //update the current turn
     currentPlayerTurn--;
+    if(currentPlayerTurn < 0){
+        currentPlayerTurn = 0;
+    }
 
     nextTurn();
 
@@ -34,4 +37,8 @@ function foldPlayer(){
         '<img id="'+PlayerListObject[i]+'c1" class="card-body1 player'+(i+1)+'-card1" src="resources/images/deck-of-card.png">' +
         '<img id="'+PlayerListObject[i]+'c2" class="card-body2 player'+(i+1)+'-card2" src="resources/images/deck-of-card.png">' +
         '</div>');*/
+}
+
+function setHumanFolded(){
+    theHumanHasFolded = true;
 }

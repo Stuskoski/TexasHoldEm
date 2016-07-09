@@ -7,7 +7,7 @@
 <script src="<c:url value="/resources/js/gameFunctions/InitializeDeck.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/tableButtons/Call.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/tableButtons/Check.js"/>"></script>
-<script src="<c:url value="/resources/js/gameFunctions/tableButtons/Fold.js"/>"></script>
+<script src="<c:url value="/resources/js/gameFunctions/tableButtons/fold.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/tableButtons/Raise.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/ShuffleArray.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/TableSetup.js"/>"></script>
@@ -22,7 +22,7 @@
 <script src="<c:url value="/resources/js/gameObjects/Deck.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/Player.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/PlayerList.js"/>"></script>
-<script src="<c:url value="/resources/js/gameObjects/PlayerScores.js"/>"></script>
+<script src="<c:url value="/resources/js/gameObjects/PlayerMoney.js"/>"></script>
 <script src="<c:url value="/resources/js/gameObjects/ThePot.js"/>"></script>
 <script src="<c:url value="/resources/js/popups/ShowAndHideInfoWindow.js"/>"></script>
 

@@ -35,6 +35,8 @@ function startGame(){
             createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
         }
 
+        reinstantiateUserMoney();
+
         setUpTable();
 
         nextDeckAction();
@@ -72,6 +74,8 @@ function restartGame(){
     for(i=0; i<staticSettingsObject.numOfPlayers; i++){
         createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
     }
+
+    reinstantiateUserMoney();
 
     setUpTable();
 

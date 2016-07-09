@@ -18,11 +18,20 @@ function nextTurn(){
 
 
         currentPlayerTurn++;//set to the next person
+        id="player-'+PlayerListObject[i].name+'-title"
 
         for (i = 0; i < PlayerListObject.length; i++) {
-            $('.player' + (i + 1) + '-title').removeClass("highlight-words");
+            $('#player-' + PlayerListObject[i].name + '-title').removeClass("highlight-words");
         }
-        $('.player' + (currentPlayerTurn + 1) + '-title').addClass("highlight-words");
+
+
+        if(currentPlayerTurn > PlayerListObject.length){
+            $('#player-' + PlayerListObject[0].name + '-title').addClass("highlight-words");
+        }else{
+            $('#player-' + PlayerListObject[currentPlayerTurn].name + '-title').addClass("highlight-words");
+        }
+
+        //$('.player' + (currentPlayerTurn + 1) + '-title').addClass("highlight-words");
 
 
         console.log(PlayerListObject);

@@ -26,6 +26,7 @@ function nextDeckAction(){
         deckMsg.append("Flop");
         //showAndThenHideInfoWindow("Dealing Cards");
         DeckAction++;
+        takeTheBlindFromPlayersAndAddToPot();
     }
     else if(DeckAction == 1){
        // showAndThenHideInfoWindow("Here comes the flop");
