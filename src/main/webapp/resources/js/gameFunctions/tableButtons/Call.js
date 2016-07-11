@@ -4,6 +4,9 @@
 
 function callPlayer(){
     console.log("Player Called");
+
+    previousPlayerRaised = false;
+
     //call function
     nextTurn();
 

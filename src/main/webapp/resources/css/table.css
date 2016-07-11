@@ -206,7 +206,7 @@
     color: white;
     font-weight: bold;
 }
-.player2-title{
+.player1-title{
     color: white;
     font-weight: bold;
     position: absolute;
@@ -214,6 +214,10 @@
     -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
+}
+.player2-title{
+    color: white;
+    font-weight: bold;
 }
 .player3-title{
     color: white;
@@ -226,21 +230,17 @@
 .player5-title{
     color: white;
     font-weight: bold;
-}
-.player6-title{
-    color: white;
-    font-weight: bold;
     -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
     position: absolute;
     bottom: 18px;
 }
-.player7-title{
+.player6-title{
     color: white;
     font-weight: bold;
 }
-.player8-title{
+.player7-title{
     color: white;
     font-weight: bold;
     -ms-transform: rotate(180deg); /* IE 9 */

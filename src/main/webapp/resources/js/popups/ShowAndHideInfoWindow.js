@@ -38,4 +38,6 @@ function showEndGameMsg(msg){
 
     popupWindow.removeClass("hide-me");
     popupWindow.fadeIn("slow");
+
+    setTimeout(hideInfoWindow, 5000);
 }

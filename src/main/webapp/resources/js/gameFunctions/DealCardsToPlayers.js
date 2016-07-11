@@ -50,4 +50,16 @@ function dealCards(){
             '</div>');*/
     }
 
+    makePlayerTitlesInTheRightPlace();
+
+}
+
+function makePlayerTitlesInTheRightPlace(){
+    var i;
+
+    for(i=0; i<settingsObjectStatic.numOfPlayers; i++){
+        //player-'+PlayerListObject[i].name+'-title
+        //.player7-title
+        $('player-'+PlayerListObject[i].name+'-title').addClass('player'+i+'-title');
+    }
 }
