@@ -118,6 +118,7 @@
     right: 45%;
     width: 150px;
     height: 150px;
+    margin-top: -30px;
     display: inline-block;
     -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
@@ -210,7 +211,7 @@
     color: white;
     font-weight: bold;
     position: absolute;
-    bottom: 18px;
+    bottom: 0;
     -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
@@ -234,7 +235,7 @@
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
     position: absolute;
-    bottom: 18px;
+    bottom: 0;
 }
 .player6-title{
     color: white;
@@ -247,5 +248,5 @@
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
     position: absolute;
-    bottom: 18px;
+    bottom: 0;
 }

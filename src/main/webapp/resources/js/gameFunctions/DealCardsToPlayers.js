@@ -27,15 +27,19 @@ function dealCards(){
 
         if(i==0){
             homeDiv.append('<div id="'+PlayerListObject[i].name+'-hand" class="player'+(i+1)+'-hand">' +
+                '<div>' +
                 '<div id="player-'+PlayerListObject[i].name+'-title" class="player-title">'+getPlayerList()[i].name+'</div>' +
                 '<div id="player'+PlayerListObject[i].name+'-bank" class="player-title">$'+getPlayerList()[i].money+'</div>' +
+                '</div>' +
                 '<img id="'+PlayerListObject[i].name+'c1" class="card-body1 player'+(i+1)+'-card1" src="'+getPlayerList()[i].hand[0].cardImg.src+'">' +
                 '<img id="'+PlayerListObject[i].name+'c2" class="card-body2 player'+(i+1)+'-card2" src="'+getPlayerList()[i].hand[1].cardImg.src+'">' +
                 '</div>');
         }else{
             homeDiv.append('<div id="'+PlayerListObject[i].name+'-hand" class="player'+(i+1)+'-hand">' +
+                '<div id="'+PlayerListObject[i].name+'-title-container">' +
                 '<div id="player-'+PlayerListObject[i].name+'-title" class="player-title">'+getPlayerList()[i].name+'</div>' +
                 '<div id="player'+PlayerListObject[i].name+'-bank" class="player-title">$'+getPlayerList()[i].money+'</div>' +
+                '</div>' +
                 '<img id="'+PlayerListObject[i].name+'c1" class="card-body1 player'+(i+1)+'-card1" src="resources/images/deck-of-card.png">' +
                 '<img id="'+PlayerListObject[i].name+'c2" class="card-body2 player'+(i+1)+'-card2" src="resources/images/deck-of-card.png">' +
                 '</div>');
@@ -60,6 +64,7 @@ function makePlayerTitlesInTheRightPlace(){
     for(i=0; i<settingsObjectStatic.numOfPlayers; i++){
         //player-'+PlayerListObject[i].name+'-title
         //.player7-title
-        $('player-'+PlayerListObject[i].name+'-title').addClass('player'+i+'-title');
+        $('#'+PlayerListObject[i].name+'-title-container').addClass('player'+i+'-title');
+        //$('player-'+PlayerListObject[i].name+'-title').addClass('player'+i+'-title');
     }
 }
