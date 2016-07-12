@@ -19,7 +19,8 @@ function getCompChoice(){
             checkPlayer();
             break;
         case 3:
-            foldPlayer();
+            checkPlayer();
+            //foldPlayer();
             break;
         default:
             callPlayer();
