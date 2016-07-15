@@ -8,7 +8,7 @@ function PlayerObject(name, playerNumber){
     this.name = name;
     this.playerNumber = playerNumber;
     this.hand = [];
-    this.score = 0;
+    this.handRank = 0;
     this.money = 1000;
     this.hasFolded = false;
     this.isItMyTurn = false;
