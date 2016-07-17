@@ -3,6 +3,7 @@
 <%-- Javascript imports HOUSE --%>
 <script src="<c:url value="/resources/js/gameConfig/GameConfig.js"/>"></script>
 <script src="<c:url value="/resources/js/gameConfig/SettingsObject.js"/>"></script>
+<script src="<c:url value="/resources/js/gameConfig/ShowCardsAfterRound.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/AI/ComputerActions.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/InitializeDeck.js"/>"></script>
 <script src="<c:url value="/resources/js/gameFunctions/tableButtons/Call.js"/>"></script>

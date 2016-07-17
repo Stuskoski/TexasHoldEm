@@ -10,7 +10,7 @@ function doComputerTurn(){
 }
 
 function getCompChoice(){
-    switch(Math.round(Math.random()*4) + 1){
+    switch(Math.round(Math.random()*6) + 1){
         case 1:
             raisePlayer();
             break;
@@ -19,8 +19,13 @@ function getCompChoice(){
             checkPlayer();
             break;
         case 3:
-            checkPlayer();
-            //foldPlayer();
+            //checkPlayer();
+            if(PlayerListObject[currentPlayerTurn].money > 500){
+               // foldPlayer();
+                checkPlayer();
+            }else{
+                checkPlayer();
+            }
             break;
         default:
             callPlayer();

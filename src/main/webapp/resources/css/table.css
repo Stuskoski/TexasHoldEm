@@ -5,6 +5,16 @@
     left: 35%;
     top: 38%;
 }
+.player-winning{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 150px;
+    position: absolute;
+    text-align: center;
+    margin-top: 30px;
+}
 .next-step{
     background-color: rgba(0, 0, 0, 0.5);
     color: white;

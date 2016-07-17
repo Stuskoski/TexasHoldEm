@@ -15,7 +15,7 @@ function setUpTable(){
 
     homeDiv.append('<div class="">' +
         '<div class="next-step">Deal</div>' +
-        '<img onClick = "nextDeckAction();" class="table-deck" src="'+DeckReference.deckImg.src+'">' +
+        '<img class="table-deck" src="'+DeckReference.deckImg.src+'">' +
         '</div>');
     //check call raise fold
     homeDiv.append('<div class="table-btn-container">' +

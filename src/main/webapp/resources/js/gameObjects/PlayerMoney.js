@@ -80,9 +80,9 @@ function takeTheBlindFromPlayersAndAddToPot(){
     var i;
 
     for(i=0; i<PlayerListObject.length; i++){
-        if(PlayerListObject[i].money >= 250){
-            PlayerListObject[i].money -= 250;
-            ThePot += 250;
+        if(PlayerListObject[i].money >= 100){
+            PlayerListObject[i].money -= 100;
+            ThePot += 100;
         }else{
             ThePot += PlayerListObject[i].money;
             PlayerListObject[i].money = 0;

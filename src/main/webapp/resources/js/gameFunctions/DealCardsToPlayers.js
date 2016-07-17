@@ -19,9 +19,8 @@ function dealCards(){
         for(j=0; j<2; j++){
             getPlayerList()[i].hand.push(DeckReference.getCardFromDeckAndRemove());
         }
-        console.log("Player: " + getPlayerList()[i].name + "'s hand is now \n" +
-            getPlayerList()[i].hand[0].cardValue + ", "+getPlayerList()[i].hand[0].cardSuit+"\n" +
-            getPlayerList()[i].hand[1].cardValue + ", "+getPlayerList()[i].hand[1].cardSuit+"\n");
+        console.log("Player: " + getPlayerList()[i].name + "'s hand is now" +
+            playersHandToString(getPlayerList()[i]));
 
         var homeDiv = $('#home-div');
 
@@ -67,4 +66,16 @@ function makePlayerTitlesInTheRightPlace(){
         $('#'+PlayerListObject[i].name+'-title-container').addClass('player'+i+'-title');
         //$('player-'+PlayerListObject[i].name+'-title').addClass('player'+i+'-title');
     }
+}
+
+
+function playersHandToString(player){
+    var playerHandString = "";
+    var i;
+
+    for(i=0; i<player.hand.length; i++){
+        playerHandString += "\n" + player.hand[i].cardValue + ", " + player.hand[i].cardSuit;
+    }
+
+    return playerHandString;
 }

@@ -2,6 +2,8 @@
  * Created by r730819 on 7/8/2016.
  */
 
+var highCards = [];
+
 function whoWins(){
     var list = PlayerListObject;
     var i;
@@ -9,7 +11,7 @@ function whoWins(){
     var nonFoldedPlayers = 0;
     var winner;
 
-    DeckAction = 0;
+   // DeckAction = 0;
     currentPlayerTurn = 0;
 
 
@@ -26,71 +28,174 @@ function whoWins(){
         showAndThenHideInfoWindow(PlayerListObject[winner].name + " wins the round!");
         PlayerListObject[winner].money += ThePot;
         ThePot = 0;
-        saveUserMoney();
+        //saveUserMoney();
     }else{
         for(i=0; i<list.length; i++){
             if(!list[i].hasFolded){
-                //var hand = list[i].hand;
+                var sortedOnlyHand;
                 var combined = list[i].hand.concat(TableCardsStaticObject.list);
                 var sorted;
+                var continueFindingHands = true;
 
                 sorted = sortArrayOfCardsByNum(combined);
+                sortedOnlyHand = sortArrayOfCardsByNum(list[i].hand);
 
                 console.log("SORTED ARRAY");
                 console.log(sorted);
 
 
-                if(checkRoyalFlush(sorted)){
+                if(checkRoyalFlush(sorted) && continueFindingHands){
                     //check for tie
                     //check for tie breaker if so
                     list[i].handRank = 10;
-                    break;
+                    console.log(list[i].name + " has a royal flush");
+                    continueFindingHands = false;
                 }
 
-                if(checkStraightFlush(sorted)){
+                if(checkStraightFlush(sorted) && continueFindingHands){
                     list[i].handRank = 9;
-                    break;
+                    console.log(list[i].name + " has a straight flush");
+                    continueFindingHands = false
                 }
-                if(check4OfAKind(sorted)){
+                if(check4OfAKind(sorted) && continueFindingHands){
                     list[i].handRank = 8;
-                    break;
+                    console.log(list[i].name + " has a 4 of a kind");
+                    continueFindingHands = false;
                 }
-                if(checkFullHouse(sorted)){
+                if(checkFullHouse(sorted) && continueFindingHands){
                     list[i].handRank = 7;
-                    break;
+                    console.log(list[i].name + " has a full house");
+                    continueFindingHands = false;
                 }
-                if(checkFlush(sorted)){
+                if(checkFlush(sorted) && continueFindingHands){
                     list[i].handRank = 6;
-                    break;
+                    console.log(list[i].name + " has a flush");
+                   continueFindingHands = false;
                 }
-                if(checkStraight(sorted)){
+                if(checkStraight(sorted) && continueFindingHands){
                     list[i].handRank = 5;
-                    break;
+                    console.log(list[i].name + " has a straight");
+                    continueFindingHands = false;
                 }
-                if(check3OfAKind(sorted)){
+                if(check3OfAKind(sorted) && continueFindingHands){
                     list[i].handRank = 4;
-                    break;
+                    console.log(list[i].name + " has a 3 of a kind");
+                    continueFindingHands = false;
                 }
-                if(check2Pair(sorted)){
+                if(check2Pair(sorted) && continueFindingHands){
                     list[i].handRank = 3;
-                    break;
+                    console.log(list[i].name + " has a 2 pair");
+                    continueFindingHands = false;
                 }
-                if(check1Pair(sorted)){
+                if(check1Pair(sorted) && continueFindingHands){
                     list[i].handRank = 2;
-                    break;
+                    console.log(list[i].name + " has a 1 pair");
+                    continueFindingHands = false;
                 }
-                if(checkHighCard(sorted)){
+                if(checkHighCard(sortedOnlyHand) && continueFindingHands){
                     list[i].handRank = 1;
-                    break;
+                    console.log(list[i].name + " has a high card");
+                    continueFindingHands = false;
                 }
             }
         }
-        //check hand scores
+        showCardsAfterRounds();
+        checkHandScores();
     }
 
+    saveUserMoney();
 
+   // restartGame();
+}
 
-    restartGame();
+function checkHandScores(){
+    var list = PlayerListObject;
+    var i;
+    var maxHand = 0;
+    var winningHand = null;
+    var tempPlayer;
+    var maxHandPosition;
+
+    //Find max score hand
+    for(i=0; i<list.length; i++) {
+        if(list[i].handRank > maxHand){
+            maxHand = list[i].handRank;
+            tempPlayer = list[i];
+            maxHandPosition = i;
+        }
+    }
+
+    switch (tempPlayer.handRank){
+        case 1:
+            //high card
+            winningHand = "High Card!";
+            maxHandPosition = findHighCardAndEmptyArray();
+            tempPlayer = list[maxHandPosition];
+            break;
+        case 2:
+            //1 pair
+            winningHand = "1 Pair!";
+            break;
+        case 3:
+            //2 pair
+            winningHand = "2 Pair!";
+            break;
+        case 4:
+            //3 kind
+            winningHand = "3 Of A Kind!";
+            break;
+        case 5:
+            //straight
+            winningHand = "Straight!";
+            break;
+        case 6:
+            //flush
+            winningHand = "Flush!";
+            break;
+        case 7:
+            //full house
+            winningHand = "Full House!";
+            break;
+        case 8:
+            //4
+            winningHand = "4 of A Kind!";
+            break;
+        case 9:
+            //straight flush
+            winningHand = "Straight Flush!";
+            break;
+        case 10:
+            //royal flush
+            winningHand = "Royal Flush!";
+            break;
+    }
+
+    console.log("The WINNER ISSSSS....");
+
+    PlayerListObject[maxHandPosition].money += ThePot;
+    ThePot = 0;
+    var tableContainer = $('.table-btn-container');
+    tableContainer.append('<div class="player-winning center-div margin-bot-1em">'+tempPlayer.name + ' wins the round with a ' + winningHand + '</div>');
+    //alert(tempPlayer.name + " wins the round with a " + winningHand + "\n Hand: \n" + tempPlayer.hand[0].cardValue + ", " + tempPlayer.hand[0].cardSuit + "\n" +
+     //   tempPlayer.hand[1].cardValue + ", " + tempPlayer.hand[1].cardSuit + "\n Table: " + TableCardsStaticObject.tableCardsToString());
+    console.log(tempPlayer.name + " wins the round with a " + winningHand + "\n Hand: \n" + tempPlayer.hand[0].cardValue + ", " + tempPlayer.hand[0].cardSuit + "\n" +
+        tempPlayer.hand[1].cardValue + ", " + tempPlayer.hand[1].cardSuit + "\n Table: " + TableCardsStaticObject.tableCardsToString());
+    //showAndThenHideInfoWindow(tempPlayer.name + " wins the round with a " + winningHand);
+}
+
+function findHighCardAndEmptyArray(){
+    var i, highCardPos = 0, maxCard = 0;
+
+    for(i=0; i<highCards.length; i++){
+        if(highCards[i].cardValue > maxCard){
+            highCardPos = i;
+            maxCard = highCards[i].cardValue;
+        }
+    }
+
+    highCards.length = 0;
+
+    return highCardPos;
 }
 
 /**
@@ -173,20 +278,20 @@ function checkStraightFlush(hand){
 }
 function check4OfAKind(hand){
     var check = false;
-    var cardsInARow = 0;
+    var matches = 0;
     var tempCardValue = hand[0].cardValue; //initialize to first card in the hand
     var i;
 
     for(i=1; i<hand.length; i++){//start on the second card in the hand
-        if(hand[i].cardValue == (tempCardValue+1)){
-            cardsInARow++;
+        if(hand[i].cardValue == (tempCardValue)){
+            matches++;
             tempCardValue = hand[i].cardValue;
         }else{
-            cardsInARow = 0;
+            matches = 0;
             tempCardValue = hand[i].cardValue;
         }
 
-        if(cardsInARow == 4){
+        if(matches == 3){
             check = true;
             break;
         }
@@ -206,7 +311,7 @@ function check4OfAKind(hand){
  */
 function checkFullHouse(hand) {
     var check = false;
-    var cardsInARow = 0;
+    var matches = 0;
     var tempCardValue = hand[0].cardValue; //initialize to first card in the hand
     var i;
     var position = 0;
@@ -215,32 +320,34 @@ function checkFullHouse(hand) {
 
     //Check for three card pair
     for (i = 1; i < hand.length; i++) {//start on the second card in the hand
-        if (hand[i].cardValue == (tempCardValue + 1)) {
-            cardsInARow++;
+        if (hand[i].cardValue == (tempCardValue)) {
+            matches++;
             tempCardValue = hand[i].cardValue;
         } else {
-            cardsInARow = 0;
+            matches = 0;
             tempCardValue = hand[i].cardValue;
         }
 
-        if (cardsInARow == 3) {
+        if (matches == 2) {
             position = i; //save last position
             cardsThatWereThree = hand[i].cardValue;
             break;
         }
     }
 
+    matches = 0;
+
     //Check for two card pair
     for (i = 1; i < hand.length; i++) {//start on the second card in the hand
-        if ((hand[i].cardValue == (tempCardValue + 1)) && (hand[i].cardValue != cardsThatWereThree)){
-            cardsInARow++;
+        if ((hand[i].cardValue == (tempCardValue)) && (hand[i].cardValue != cardsThatWereThree)){
+            matches++;
             tempCardValue = hand[i].cardValue;
         } else {
-            cardsInARow = 0;
+            matches = 0;
             tempCardValue = hand[i].cardValue;
         }
 
-        if (cardsInARow == 2) {
+        if (matches == 1) {
             position = i; //save last position
             cardsThatWereTwo = hand[i].cardValue;
             break;
@@ -314,20 +421,21 @@ function checkStraight(hand){
 }
 function check3OfAKind(hand){
     var check = false;
-    var cardsInARow = 0;
+    var cardsMatching = 0;
     var tempCardValue = hand[0].cardValue; //initialize to first card in the hand
     var i;
 
     for(i=1; i<hand.length; i++){//start on the second card in the hand
-        if(hand[i].cardValue == (tempCardValue+1)){
-            cardsInARow++;
+        if(hand[i].cardValue == (tempCardValue)){
+            cardsMatching++;
             tempCardValue = hand[i].cardValue;
         }else{
-            cardsInARow = 0;
+            cardsMatching = 0;
             tempCardValue = hand[i].cardValue;
         }
 
-        if(cardsInARow == 3){
+        //only 2 since its a match.  I.e) 1==1 ++, 1 == 1, ++ so 2 matches not 3
+        if(cardsMatching == 2){
             check = true;
             break;
         }
@@ -337,7 +445,7 @@ function check3OfAKind(hand){
 }
 function check2Pair(hand){
     var check = false;
-    var cardsInARow = 0;
+    var pairs = 0;
     var tempCardValue = hand[0].cardValue; //initialize to first card in the hand
     var i;
     var firstPair = null;
@@ -345,31 +453,33 @@ function check2Pair(hand){
 
     //Check for first pair
     for (i = 1; i < hand.length; i++) {//start on the second card in the hand
-        if (hand[i].cardValue == (tempCardValue + 1)) {
-            cardsInARow++;
+        if (hand[i].cardValue == (tempCardValue)) {
+            pairs++;
             tempCardValue = hand[i].cardValue;
         } else {
-            cardsInARow = 0;
+            pairs = 0;
             tempCardValue = hand[i].cardValue;
         }
 
-        if (cardsInARow == 2) {
+        if (pairs == 1) {
             firstPair = hand[i].cardValue;
             break;
         }
     }
 
+    pairs = 0;
+
     //Check for second pair
     for (i = 1; i < hand.length; i++) {//start on the second card in the hand
-        if ((hand[i].cardValue == (tempCardValue + 1)) && (hand[i].cardValue != firstPair)){
-            cardsInARow++;
+        if ((hand[i].cardValue == (tempCardValue)) && (hand[i].cardValue != firstPair)){
+            pairs++;
             tempCardValue = hand[i].cardValue;
         } else {
-            cardsInARow = 0;
+            pairs = 0;
             tempCardValue = hand[i].cardValue;
         }
 
-        if (cardsInARow == 2) {
+        if (pairs == 1) {
             secondPair = hand[i].cardValue;
             break;
         }
@@ -383,20 +493,24 @@ function check2Pair(hand){
 }
 function check1Pair(hand){
     var check = false;
-    var cardsInARow = 0;
+    var pairs = 0;
     var tempCardValue = hand[0].cardValue; //initialize to first card in the hand
     var i;
 
+    console.log("Checking for pairs");
+
+
     for(i=1; i<hand.length; i++){//start on the second card in the hand
-        if(hand[i].cardValue == (tempCardValue+1)){
-            cardsInARow++;
+        console.log("hand[i]= " + hand[i].cardValue + ", temp= " + tempCardValue);
+        if(hand[i].cardValue == (tempCardValue)){
+            pairs++;
             tempCardValue = hand[i].cardValue;
         }else{
-            cardsInARow = 0;
+            pairs = 0;
             tempCardValue = hand[i].cardValue;
         }
 
-        if(cardsInARow == 2){
+        if(pairs == 1){
             check = true;
             break;
         }
@@ -405,7 +519,8 @@ function check1Pair(hand){
     return check;
 }
 function checkHighCard(hand){
-    var highCard = hand[hand.length - 1];
+    highCards.push(hand[hand.length - 1]);
+
     return true;
 }
 

@@ -56,8 +56,9 @@ function nextDeckAction(){
         whoWins();
         deckMsg.empty();
         deckMsg.append("Restart");
-        DeckAction=0;
+        //DeckAction=0;
     }
+
 }
 
 

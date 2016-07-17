@@ -16,3 +16,14 @@ TableCardsObject.prototype.clearTableCards = function(){
     this.list.length = 0;
 };
 
+TableCardsObject.prototype.tableCardsToString = function(){
+    var string = "\n";
+    var i;
+
+    for(i=0; i<this.list.length; i++){
+        string += this.list[i].cardValue + ", " + this.list[i].cardSuit + "\n";
+    }
+
+    return string;
+};
+
