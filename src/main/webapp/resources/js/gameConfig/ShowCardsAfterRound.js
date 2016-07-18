@@ -10,7 +10,7 @@ function showCardsAfterRounds(){
     //<div class="table-btn-container">
     for(i=0; i<PlayerListObject.length; i++){
 
-        $('#'+PlayerListObject[i].name+'c1').attr("src", PlayerListObject[i].hand[0].cardImg.src);
+        $('#'+PlayerListObject[i].name+'c1').attr("src", PlayerListObject[i].hand[0].cardImg.src).css('z-index', 15);
         $('#'+PlayerListObject[i].name+'c2').attr("src", PlayerListObject[i].hand[1].cardImg.src);
 
     }

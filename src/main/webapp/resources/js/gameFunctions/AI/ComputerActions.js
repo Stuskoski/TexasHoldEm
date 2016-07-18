@@ -6,29 +6,104 @@
 
 function doComputerTurn(){
     //simulate thinking
+    givePlayersTheirCurrentHandScores();
     setTimeout(getCompChoice, Math.round(Math.random()*2500) + 500);
 }
 
+//call, check, fold, raise
 function getCompChoice(){
-    switch(Math.round(Math.random()*6) + 1){
-        case 1:
-            raisePlayer();
-            break;
-        case 2:
+    var choice = Math.round(Math.random()*8) + 1;
 
-            checkPlayer();
-            break;
-        case 3:
-            //checkPlayer();
-            if(PlayerListObject[currentPlayerTurn].money > 500){
-               // foldPlayer();
-                checkPlayer();
+    console.log("Computer choice: " + choice);
+
+    switch(choice){
+        //raise, the bluff, raise anyways
+        case 1:
+            if(PlayerListObject[currentPlayerTurn].money >= 200) {
+                raisePlayer();
             }else{
-                checkPlayer();
+                if(checkIfINeedToRaiseOrCall()){
+                    if(!callPlayer()){
+                        checkPlayer();
+                    }
+                }else{
+                    if(!checkPlayer()){
+                        callPlayer();
+                    }
+                }
             }
             break;
+        //check
+        case 2:
+            if(checkIfINeedToRaiseOrCall()){
+                if(PlayerListObject[currentPlayerTurn].money > 500) {
+                    raisePlayer();
+                }else{
+                    if(!callPlayer()){
+                        checkPlayer();
+                    }
+                }
+            }else{
+                if(!checkPlayer()){
+                    callPlayer();
+                }
+            }
+            break;
+        //call
+        case 3:
+            if(checkIfINeedToRaiseOrCall()){
+                if(PlayerListObject[currentPlayerTurn].money > 200){
+                    if(!callPlayer()){
+                        checkPlayer();
+                    }
+                }else{
+                    if(PlayerListObject[currentPlayerTurn].handRank <= 3) {
+                        foldPlayer();
+                    }else{
+                        if(!callPlayer()){
+                            checkPlayer();
+                        }
+                    }
+                }
+            }else{
+                if(!checkPlayer()){
+                    callPlayer();
+                }
+            }
+            break;
+
+        case 4:
+            if(PlayerListObject[currentPlayerTurn].handRank <= 2){
+                foldPlayer();
+            }else{
+                if(checkIfINeedToRaiseOrCall()){
+                    if(!callPlayer()){
+                        checkPlayer();
+                    }
+                }else{
+                    if(!checkPlayer()){
+                        callPlayer();
+                    }
+                }
+            }
+
+            break;
         default:
-            callPlayer();
+            console.log(checkIfINeedToRaiseOrCall());
+            if(checkIfINeedToRaiseOrCall()){
+                if(!callPlayer()){
+                    checkPlayer();
+                }
+            }else{
+                if(PlayerListObject[currentPlayerTurn].handRank >= 2 && PlayerListObject[currentPlayerTurn].money >= 200){
+                    raisePlayer();
+                }else{
+                    if(!checkPlayer()){
+                        callPlayer();
+                    }
+                }
+            }
+
             break;
     }
 }

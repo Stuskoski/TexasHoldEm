@@ -4,7 +4,7 @@
 
 
 function dealCards(){
-    var numOfPlayers = settingsObjectStatic.numOfPlayers;
+    var numOfPlayers = PlayerListObject.length;
     var i, j;
 
     console.log("Dealing cards to "+numOfPlayers+" players");
@@ -60,7 +60,7 @@ function dealCards(){
 function makePlayerTitlesInTheRightPlace(){
     var i;
 
-    for(i=0; i<settingsObjectStatic.numOfPlayers; i++){
+    for(i=0; i<PlayerListObject.length; i++){
         //player-'+PlayerListObject[i].name+'-title
         //.player7-title
         $('#'+PlayerListObject[i].name+'-title-container').addClass('player'+i+'-title');

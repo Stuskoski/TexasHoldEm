@@ -82,6 +82,10 @@ function restartGame(){
         createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
     }
 
+    previousPlayerRaised = false;
+
+    raiseAmount = 0;
+
     reinstantiateUserMoney();
 
     setUpTable();

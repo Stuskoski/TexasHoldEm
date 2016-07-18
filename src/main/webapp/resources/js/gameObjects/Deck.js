@@ -20,6 +20,7 @@ function nextDeckAction(){
 
     console.log("Next Deck Action: " + DeckAction);
     if(DeckAction == 0){
+        resetRaise();
         DeckReference.removeCardFromDeck();
         dealCards();
         deckMsg.empty();
@@ -29,6 +30,7 @@ function nextDeckAction(){
         takeTheBlindFromPlayersAndAddToPot();
     }
     else if(DeckAction == 1){
+        resetRaise();
        // showAndThenHideInfoWindow("Here comes the flop");
         DeckReference.removeCardFromDeck();
         flopTheDeck();
@@ -37,6 +39,7 @@ function nextDeckAction(){
         DeckAction++;
     }
     else if(DeckAction == 2){
+        resetRaise();
        // showAndThenHideInfoWindow("The Turn coming up");
         DeckReference.removeCardFromDeck();
         turnTheDeck();
@@ -45,6 +48,7 @@ function nextDeckAction(){
         DeckAction++;
     }
     else if(DeckAction == 3){
+        resetRaise();
         //showAndThenHideInfoWindow("The River coming up");
         DeckReference.removeCardFromDeck();
         riverTheDeck();
@@ -53,6 +57,7 @@ function nextDeckAction(){
         DeckAction++;
     }
     else if(DeckAction == 4){
+        resetRaise();
         whoWins();
         deckMsg.empty();
         deckMsg.append("Restart");

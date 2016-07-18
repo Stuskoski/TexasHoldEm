@@ -18,7 +18,7 @@ function showAndThenHideInfoWindow(msg){
     popupWindow.removeClass("hide-me");
     popupWindow.fadeIn("slow");
 
-    setTimeout(hideInfoWindow, 500);
+    setTimeout(hideInfoWindow, 1000);
 }
 
 function hideInfoWindow(){

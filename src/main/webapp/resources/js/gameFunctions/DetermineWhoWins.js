@@ -25,85 +25,22 @@ function whoWins(){
     }
 
     if(nonFoldedPlayers <= 1){
-        showAndThenHideInfoWindow(PlayerListObject[winner].name + " wins the round!");
+        var tableContainer = $('.table-btn-container');
+        tableContainer.append('<div class="player-winning center-div margin-bot-1em">'+PlayerListObject[winner].name +' wins the round!</div>');
+        //showAndThenHideInfoWindow(PlayerListObject[winner].name + " wins the round!");
         PlayerListObject[winner].money += ThePot;
         ThePot = 0;
+        saveUserMoney();
+        showCardsAfterRounds();
         //saveUserMoney();
     }else{
-        for(i=0; i<list.length; i++){
-            if(!list[i].hasFolded){
-                var sortedOnlyHand;
-                var combined = list[i].hand.concat(TableCardsStaticObject.list);
-                var sorted;
-                var continueFindingHands = true;
-
-                sorted = sortArrayOfCardsByNum(combined);
-                sortedOnlyHand = sortArrayOfCardsByNum(list[i].hand);
-
-                console.log("SORTED ARRAY");
-                console.log(sorted);
-
-
-                if(checkRoyalFlush(sorted) && continueFindingHands){
-                    //check for tie
-                    //check for tie breaker if so
-                    list[i].handRank = 10;
-                    console.log(list[i].name + " has a royal flush");
-                    continueFindingHands = false;
-                }
-
-                if(checkStraightFlush(sorted) && continueFindingHands){
-                    list[i].handRank = 9;
-                    console.log(list[i].name + " has a straight flush");
-                    continueFindingHands = false
-                }
-                if(check4OfAKind(sorted) && continueFindingHands){
-                    list[i].handRank = 8;
-                    console.log(list[i].name + " has a 4 of a kind");
-                    continueFindingHands = false;
-                }
-                if(checkFullHouse(sorted) && continueFindingHands){
-                    list[i].handRank = 7;
-                    console.log(list[i].name + " has a full house");
-                    continueFindingHands = false;
-                }
-                if(checkFlush(sorted) && continueFindingHands){
-                    list[i].handRank = 6;
-                    console.log(list[i].name + " has a flush");
-                   continueFindingHands = false;
-                }
-                if(checkStraight(sorted) && continueFindingHands){
-                    list[i].handRank = 5;
-                    console.log(list[i].name + " has a straight");
-                    continueFindingHands = false;
-                }
-                if(check3OfAKind(sorted) && continueFindingHands){
-                    list[i].handRank = 4;
-                    console.log(list[i].name + " has a 3 of a kind");
-                    continueFindingHands = false;
-                }
-                if(check2Pair(sorted) && continueFindingHands){
-                    list[i].handRank = 3;
-                    console.log(list[i].name + " has a 2 pair");
-                    continueFindingHands = false;
-                }
-                if(check1Pair(sorted) && continueFindingHands){
-                    list[i].handRank = 2;
-                    console.log(list[i].name + " has a 1 pair");
-                    continueFindingHands = false;
-                }
-                if(checkHighCard(sortedOnlyHand) && continueFindingHands){
-                    list[i].handRank = 1;
-                    console.log(list[i].name + " has a high card");
-                    continueFindingHands = false;
-                }
-            }
-        }
+        givePlayersTheirCurrentHandScores();
+        saveUserMoney();
         showCardsAfterRounds();
         checkHandScores();
     }
 
-    saveUserMoney();
+
 
    // restartGame();
 }
@@ -115,6 +52,7 @@ function checkHandScores(){
     var winningHand = null;
     var tempPlayer;
     var maxHandPosition;
+    var drawBreaker = false;
 
     //Find max score hand
     for(i=0; i<list.length; i++) {
@@ -125,62 +63,203 @@ function checkHandScores(){
         }
     }
 
+    var drawScore = tempPlayer.handRank;
+    var drawPlayers = [];
+
+    for(i=0; i<list.length; i++) {
+        if(list[i].handRank == drawScore){
+            drawPlayers.push(list[i]);
+        }
+    }
+
+    if(drawPlayers.length >= 2){
+        //determine draw
+        tempPlayer = determineDrawWinner(drawPlayers);
+        drawPlayers.length = 0;
+        drawBreaker = true;
+    }
+
     switch (tempPlayer.handRank){
         case 1:
             //high card
-            winningHand = "High Card!";
-            maxHandPosition = findHighCardAndEmptyArray();
-            tempPlayer = list[maxHandPosition];
+            winningHand = "";
+            //maxHandPosition = findHighCardAndEmptyArray();
+            //tempPlayer = list[maxHandPosition];
             break;
         case 2:
             //1 pair
-            winningHand = "1 Pair!";
+            winningHand = "1 Pair";
             break;
         case 3:
             //2 pair
-            winningHand = "2 Pair!";
+            winningHand = "2 Pair";
             break;
         case 4:
             //3 kind
-            winningHand = "3 Of A Kind!";
+            winningHand = "3 of A Kind";
             break;
         case 5:
             //straight
-            winningHand = "Straight!";
+            winningHand = "Straight";
             break;
         case 6:
             //flush
-            winningHand = "Flush!";
+            winningHand = "Flush";
             break;
         case 7:
             //full house
-            winningHand = "Full House!";
+            winningHand = "Full House";
             break;
         case 8:
             //4
-            winningHand = "4 of A Kind!";
+            winningHand = "4 of A Kind";
             break;
         case 9:
             //straight flush
-            winningHand = "Straight Flush!";
+            winningHand = "Straight Flush";
             break;
         case 10:
             //royal flush
-            winningHand = "Royal Flush!";
+            winningHand = "Royal Flush";
             break;
     }
 
-    console.log("The WINNER ISSSSS....");
-
     PlayerListObject[maxHandPosition].money += ThePot;
+
     ThePot = 0;
+
     var tableContainer = $('.table-btn-container');
-    tableContainer.append('<div class="player-winning center-div margin-bot-1em">'+tempPlayer.name + ' wins the round with a ' + winningHand + '</div>');
+
+    var tieBreakerMsg = "!";
+    if(drawBreaker && tempPlayer.handRank != 1){
+        tieBreakerMsg = " and a high card!";
+        drawBreaker = false;
+    }
+
+    if(drawBreaker && tempPlayer.handRank == 1){
+        tieBreakerMsg = "High Card!";
+        drawBreaker = false;
+    }
+
+    tableContainer.append('<div class="player-winning center-div margin-bot-1em">'+tempPlayer.name + ' wins the round with a ' + winningHand + tieBreakerMsg + '</div>');
     //alert(tempPlayer.name + " wins the round with a " + winningHand + "\n Hand: \n" + tempPlayer.hand[0].cardValue + ", " + tempPlayer.hand[0].cardSuit + "\n" +
      //   tempPlayer.hand[1].cardValue + ", " + tempPlayer.hand[1].cardSuit + "\n Table: " + TableCardsStaticObject.tableCardsToString());
     console.log(tempPlayer.name + " wins the round with a " + winningHand + "\n Hand: \n" + tempPlayer.hand[0].cardValue + ", " + tempPlayer.hand[0].cardSuit + "\n" +
         tempPlayer.hand[1].cardValue + ", " + tempPlayer.hand[1].cardSuit + "\n Table: " + TableCardsStaticObject.tableCardsToString());
     //showAndThenHideInfoWindow(tempPlayer.name + " wins the round with a " + winningHand);
+}
+
+function determineDrawWinner(drawPlayersArray){
+    var highCards = [[],[]];
+    var i;
+    var highCard = 0;
+    var maxPlayer;
+    var highCardPlayerCounter = 0;
+
+    //get the high cards of every hand
+    for(i=0; i<drawPlayersArray.length; i++){
+        highCards[i] = [];
+
+        highCards[i][0] = (findHighCardFromUserHand(drawPlayersArray[i].hand));
+        highCards[i][1] = (drawPlayersArray[i]);
+    }
+
+    for(i=0; i<highCards.length; i++){
+        if(highCards[i][0].cardValue >= highCard){
+            highCard = highCards[i][0].cardValue;
+            maxPlayer = highCards[i][1];
+            highCardPlayerCounter++;
+        }
+    }
+
+    if(highCardPlayerCounter >= 2){
+        console.error("MULTIPLE PLAYERS WITH SAME HIGH CARDS, HANDLE THIS!");
+    }
+
+    return maxPlayer;
+}
+
+function findHighCardFromUserHand(hand){
+    var sortedHand;
+
+    sortedHand = sortArrayOfCardsByNum(hand);
+
+    return sortedHand[sortedHand.length-1];
+}
+
+function givePlayersTheirCurrentHandScores(){
+    var i;
+    var list = PlayerListObject;
+
+    for(i=0; i<list.length; i++){
+        if(!list[i].hasFolded){
+            var sortedOnlyHand;
+            var combined = list[i].hand.concat(TableCardsStaticObject.list);
+            var sorted;
+            var continueFindingHands = true;
+
+            sorted = sortArrayOfCardsByNum(combined);
+            sortedOnlyHand = sortArrayOfCardsByNum(list[i].hand);
+
+            console.log("SORTED ARRAY");
+            console.log(sorted);
+
+
+            if(checkRoyalFlush(sorted) && continueFindingHands){
+                //check for tie
+                //check for tie breaker if so
+                list[i].handRank = 10;
+                console.log(list[i].name + " has a royal flush");
+                continueFindingHands = false;
+            }
+
+            if(checkStraightFlush(sorted) && continueFindingHands){
+                list[i].handRank = 9;
+                console.log(list[i].name + " has a straight flush");
+                continueFindingHands = false
+            }
+            if(check4OfAKind(sorted) && continueFindingHands){
+                list[i].handRank = 8;
+                console.log(list[i].name + " has a 4 of a kind");
+                continueFindingHands = false;
+            }
+            if(checkFullHouse(sorted) && continueFindingHands){
+                list[i].handRank = 7;
+                console.log(list[i].name + " has a full house");
+                continueFindingHands = false;
+            }
+            if(checkFlush(sorted) && continueFindingHands){
+                list[i].handRank = 6;
+                console.log(list[i].name + " has a flush");
+                continueFindingHands = false;
+            }
+            if(checkStraight(sorted) && continueFindingHands){
+                list[i].handRank = 5;
+                console.log(list[i].name + " has a straight");
+                continueFindingHands = false;
+            }
+            if(check3OfAKind(sorted) && continueFindingHands){
+                list[i].handRank = 4;
+                console.log(list[i].name + " has a 3 of a kind");
+                continueFindingHands = false;
+            }
+            if(check2Pair(sorted) && continueFindingHands){
+                list[i].handRank = 3;
+                console.log(list[i].name + " has a 2 pair");
+                continueFindingHands = false;
+            }
+            if(check1Pair(sorted) && continueFindingHands){
+                list[i].handRank = 2;
+                console.log(list[i].name + " has a 1 pair");
+                continueFindingHands = false;
+            }
+            if(checkHighCard(sortedOnlyHand) && continueFindingHands){
+                list[i].handRank = 1;
+                console.log(list[i].name + " has a high card");
+                continueFindingHands = false;
+            }
+        }
+    }
 }
 
 function findHighCardAndEmptyArray(){
@@ -497,11 +576,7 @@ function check1Pair(hand){
     var tempCardValue = hand[0].cardValue; //initialize to first card in the hand
     var i;
 
-    console.log("Checking for pairs");
-
-
     for(i=1; i<hand.length; i++){//start on the second card in the hand
-        console.log("hand[i]= " + hand[i].cardValue + ", temp= " + tempCardValue);
         if(hand[i].cardValue == (tempCardValue)){
             pairs++;
             tempCardValue = hand[i].cardValue;
@@ -530,7 +605,6 @@ function sortArrayOfCardsByNum(cardArray){
     var counter = 0; //break when 7
 
     while(counter < 7){
-        console.log("counter: " + counter);
         for(i=0; i<cardArray.length; i++){
             if(cardArray[i].cardValue == 2){
                 tempArray.push(cardArray[i]);
@@ -609,37 +683,6 @@ function sortArrayOfCardsByNum(cardArray){
                 counter++;
             }
         }
-    }
-
-    return tempArray;
-}
-
-function sortArrayOfCardsBySuit(preSortedArray) {
-    var i;
-    var tempArray = [];
-    var counter = 0; //break when 7
-    var twosArray = [],
-        threesArray = [],
-        foursArray = [],
-        fivesArray = [],
-        sixesArray = [],
-        sevensArray = [],
-        eightsArray = [],
-        ninesArray = [],
-        tensArray = [],
-        elevensArray = [],
-        twelvesArray = [],
-        thirteensArray = [],
-        fourteensArray = [];
-
-    //spades clubs, hearts, diamonds
-    //diamonds, clubs, hearts, spades
-    for (i=0; i<preSortedArray.length; i++) {
-        if(preSortedArray[i].cardValue == 14){
-            tempArray.push(preSortedArray[i]);
-            counter++;
-        }
-
     }
 
     return tempArray;

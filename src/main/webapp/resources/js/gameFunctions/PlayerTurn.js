@@ -10,7 +10,7 @@ function nextTurn(){
     var i;
 
 
-    console.log("Next Turn Called");
+    console.log("Next Turn Called, number of players: " + PlayerListObject.length);
 
     if(PlayerListObject.length <= 1){
         whoWins();
@@ -102,6 +102,9 @@ function nextTurn(){
 
             doComputerTurn();
         }
+
+        var pot = $('.current-pot');
+        pot.append('<div class="player-winning center-div margin-bot-1em">Raised Amount: $' + raiseAmount + '</div>');
 
 
     }
