@@ -19,7 +19,7 @@ function getCompChoice(){
     switch(choice){
         //raise, the bluff, raise anyways
         case 1:
-            if(PlayerListObject[currentPlayerTurn].money >= 200) {
+            if(PlayerListObject[currentPlayerTurn].money >= (raiseAmount * 2)) {
                 raisePlayer();
             }else{
                 if(checkIfINeedToRaiseOrCall()){
@@ -52,7 +52,7 @@ function getCompChoice(){
         //call
         case 3:
             if(checkIfINeedToRaiseOrCall()){
-                if(PlayerListObject[currentPlayerTurn].money > 200){
+                if(PlayerListObject[currentPlayerTurn].money > (raiseAmount * 2)){
                     if(!callPlayer()){
                         checkPlayer();
                     }
@@ -95,7 +95,7 @@ function getCompChoice(){
                     checkPlayer();
                 }
             }else{
-                if(PlayerListObject[currentPlayerTurn].handRank >= 2 && PlayerListObject[currentPlayerTurn].money >= 200){
+                if(PlayerListObject[currentPlayerTurn].handRank >= 2 && PlayerListObject[currentPlayerTurn].money >= (raiseAmount * 2)){
                     raisePlayer();
                 }else{
                     if(!checkPlayer()){

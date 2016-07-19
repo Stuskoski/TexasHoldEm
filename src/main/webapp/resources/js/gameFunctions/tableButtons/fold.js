@@ -15,7 +15,11 @@ function foldPlayer(){
     PlayerListObject.splice(currentPlayerTurn, 1);
 
     //update the current turn
-    currentPlayerTurn--;
+    //If 0, next turn will take care of going to next person
+    if(currentPlayerTurn != 0){
+        currentPlayerTurn--;
+    }
+
     if(currentPlayerTurn < 0){
         currentPlayerTurn = 0;
     }

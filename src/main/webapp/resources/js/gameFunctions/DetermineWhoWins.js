@@ -124,7 +124,9 @@ function checkHandScores(){
             break;
     }
 
-    PlayerListObject[maxHandPosition].money += ThePot;
+    tempPlayer.money += ThePot;
+
+    //PlayerListObject[maxHandPosition].money += ThePot;
 
     ThePot = 0;
 
@@ -341,7 +343,7 @@ function checkStraightFlush(hand){
             tempCardValue = hand[i].cardValue;
         }
 
-        if(cardsInARow == 5){
+        if(cardsInARow == 4){
 
             if(checkFlush(tempHand)){ //check if those 5 cards are a flush
                 check = true;
@@ -475,6 +477,8 @@ function checkFlush(hand){
 
     return check;
 }
+
+//todo failed to find a straight
 function checkStraight(hand){
     var check = false;
     var cardsInARow = 0;
@@ -490,7 +494,7 @@ function checkStraight(hand){
             tempCardValue = hand[i].cardValue;
         }
 
-        if(cardsInARow == 5){
+        if(cardsInARow == 4){
             check = true;
             break;
         }

@@ -82,9 +82,14 @@ function restartGame(){
         createPlayerAndAddToPlayerList(staticSettingsObject.playerNames[i], i+1);
     }
 
-    previousPlayerRaised = false;
+   // previousPlayerRaised = false;
+   //// var previousPlayerRaised = false;
+   // //var raiseAmount = 50;
+   // raiseArray.length = 0;
 
-    raiseAmount = 0;
+    resetRaise();
+
+    //raiseAmount = 0;
 
     reinstantiateUserMoney();
 

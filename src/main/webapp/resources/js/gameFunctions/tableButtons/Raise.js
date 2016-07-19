@@ -3,12 +3,12 @@
  */
 
 var previousPlayerRaised = false;
-var raiseAmount = 100;
+var raiseAmount = 50;
 var raiseArray = [[],[]];
 
 function raisePlayer(){
     if(checkIfINeedToRaiseOrCall()) {
-        if (PlayerListObject[currentPlayerTurn].money >= 200) {
+        if (PlayerListObject[currentPlayerTurn].money >= (raiseAmount * 2)) {
             console.log(PlayerListObject[currentPlayerTurn].name + " Raised");
 
 
@@ -64,7 +64,7 @@ function raisePlayer(){
             showAndThenHideInfoWindow("You don't have any money to raise 200")
         }
     }else{
-        if (PlayerListObject[currentPlayerTurn].money >= 100) {
+        if (PlayerListObject[currentPlayerTurn].money >= (raiseAmount)) {
             console.log(PlayerListObject[currentPlayerTurn].name + " Raised");
 
             createRaiseArray();
@@ -113,7 +113,8 @@ function raisePlayer(){
 
 function resetRaise(){
     previousPlayerRaised = false;
-    raiseAmount = 100;
+    raiseAmount = 50;
+    raiseArray.length = 0;
 }
 
 //instantiate at beginning of game as well as restart, and every time someone raises
